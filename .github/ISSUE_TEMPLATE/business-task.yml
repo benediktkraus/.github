@@ -1,0 +1,92 @@
+name: "Business Task"
+description: "Non-code work: strategy, marketing, sales, partnerships, pricing, or legal."
+title: "[BIZ] "
+labels: ["domain:business", "s:backlog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for business tasks that don't involve writing code.
+        Be specific about what success looks like and whether manual action is required.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: "What area of business does this fall under?"
+      options:
+        - strategy
+        - marketing
+        - sales
+        - partnerships
+        - pricing
+        - legal
+    validations:
+      required: true
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: "What should be achieved? Make it measurable if possible."
+      placeholder: "Negotiate partnership terms with Acme Corp for API integration. Target: signed LOI by end of Q2."
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: Task Description
+      description: "Detailed description of what needs to be done."
+      placeholder: |
+        1. Draft partnership proposal based on template in /docs/partnerships/
+        2. Schedule intro call with Acme Corp CTO
+        3. Present integration options and pricing tiers
+        4. Negotiate terms and get LOI signed
+    validations:
+      required: true
+
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: Success Criteria
+      description: "How do we know this task is done successfully?"
+      placeholder: |
+        - LOI signed by both parties
+        - Integration timeline agreed upon
+        - Pricing terms documented in CRM
+    validations:
+      required: false
+
+  - type: dropdown
+    id: requires-manual-action
+    attributes:
+      label: Requires Manual Action?
+      description: "Does this task require human involvement that cannot be automated?"
+      options:
+        - "no — fully automatable"
+        - "yes — requires human action"
+        - "partially — some steps need human input"
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      description: "When must this be completed? Leave empty if no hard deadline."
+      placeholder: "2026-06-30"
+    validations:
+      required: false
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Background
+      description: "Any background information, prior discussions, or links that provide context."
+      placeholder: |
+        - Previous conversation notes: [link]
+        - Competitor analysis: #102
+        - Budget approved in Q2 planning
+    validations:
+      required: false

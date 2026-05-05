@@ -1,0 +1,102 @@
+name: "Wave / Epic"
+description: "Group related tasks into a wave or epic with clear scope and outcomes."
+title: "[WAVE] "
+labels: ["s:backlog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Waves group related tasks into a coherent unit of work. Define what's in scope, what's out, and what "done" looks like.
+        Individual tasks can be created as sub-issues from the checklist below.
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective / Outcome
+      description: "What is the measurable outcome when this wave is complete?"
+      placeholder: "Users can authenticate via OAuth2 with Google and GitHub. Session management supports token refresh and revocation."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: "Scope: In / Out"
+      description: "Explicitly state what is included and what is excluded from this wave."
+      placeholder: |
+        **In scope:**
+        - OAuth2 login flow (Google, GitHub)
+        - Token refresh and revocation
+        - Session persistence in database
+
+        **Out of scope:**
+        - SAML/SSO integration
+        - Admin UI for session management
+        - Rate limiting on auth endpoints
+    validations:
+      required: true
+
+  - type: textarea
+    id: sub-tasks
+    attributes:
+      label: Sub-Tasks
+      description: "Checklist of tasks within this wave. Convert these to sub-issues once the wave is approved."
+      placeholder: |
+        - [ ] Implement Google OAuth2 provider
+        - [ ] Implement GitHub OAuth2 provider
+        - [ ] Add token refresh logic to session middleware
+        - [ ] Add revocation endpoint
+        - [ ] Write integration tests for full auth flow
+        - [ ] Update API documentation
+    validations:
+      required: false
+
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: "What must be completed before this wave can start? Reference issues or external blockers."
+      placeholder: |
+        - #38 — Database migration framework must be in place
+        - OAuth app credentials must be provisioned for staging
+    validations:
+      required: false
+
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks / Open Questions
+      description: "Known risks, unknowns, or questions that need answers before or during execution."
+      placeholder: |
+        - Risk: Google OAuth2 consent screen review may take 2-4 weeks
+        - Open: Should we support account linking for users with multiple providers?
+    validations:
+      required: false
+
+  - type: input
+    id: target-milestone
+    attributes:
+      label: Target Milestone
+      description: "Which milestone or release is this wave targeting?"
+      placeholder: "v2.1.0"
+    validations:
+      required: false
+
+  - type: textarea
+    id: definition-of-done
+    attributes:
+      label: Definition of Done
+      description: "Checkboxes that must all be checked before the wave is closed."
+      placeholder: |
+        - [ ] All sub-tasks completed and merged
+        - [ ] Integration tests passing in CI
+        - [ ] Documentation updated
+        - [ ] Deployed to staging and smoke-tested
+        - [ ] Product owner sign-off
+      value: |
+        - [ ] All sub-tasks completed and merged
+        - [ ] Tests passing in CI
+        - [ ] Documentation updated
+        - [ ] Deployed to staging and verified
+    validations:
+      required: false

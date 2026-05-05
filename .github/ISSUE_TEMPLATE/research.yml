@@ -1,0 +1,98 @@
+name: "Research / Analysis"
+description: "Investigate a question, compare options, or produce a structured recommendation."
+title: "[RESEARCH] "
+labels: ["type:research", "s:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for research tasks that require investigation, comparison, or analysis.
+        Define the question precisely and specify what the deliverable should look like.
+
+  - type: textarea
+    id: research-question
+    attributes:
+      label: Research Question
+      description: "State the question precisely. A good research question is specific, scoped, and answerable."
+      placeholder: "Which message queue system (RabbitMQ vs. Redis Streams vs. NATS) best fits our event-driven architecture given our throughput requirements (50K events/sec) and operational constraints (single-node deployment)?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: "Context: Why This Matters"
+      description: "Why is this research needed? What decision or action depends on the outcome?"
+      placeholder: "We're migrating from synchronous API calls to event-driven processing. The queue system choice affects latency, operational complexity, and future scalability. Decision blocks the v3.0 architecture milestone."
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: "What should be investigated? What is explicitly out of scope?"
+      placeholder: |
+        **Investigate:**
+        - Throughput benchmarks at 50K events/sec
+        - Operational complexity (setup, monitoring, failure modes)
+        - Client library maturity for Node.js and Python
+        - Licensing and cost implications
+
+        **Out of scope:**
+        - Multi-region deployment scenarios
+        - Kafka (already ruled out due to operational overhead)
+    validations:
+      required: false
+
+  - type: textarea
+    id: evaluation-criteria
+    attributes:
+      label: Evaluation Criteria
+      description: "How should options be compared? List criteria with optional weights."
+      placeholder: |
+        | Criterion | Weight |
+        |-----------|--------|
+        | Throughput at target load | 30% |
+        | Operational simplicity | 25% |
+        | Client library quality | 20% |
+        | Failure recovery | 15% |
+        | Community & long-term support | 10% |
+    validations:
+      required: false
+
+  - type: dropdown
+    id: expected-output
+    attributes:
+      label: Expected Output / Deliverable
+      description: "What format should the research result take?"
+      options:
+        - Comparison table with recommendation
+        - Architecture Decision Record (ADR)
+        - Written recommendation with rationale
+        - Proof of concept / prototype
+        - Cost analysis
+        - Risk assessment
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      description: "When is this research needed by? Leave empty if no hard deadline."
+      placeholder: "2026-05-15"
+    validations:
+      required: false
+
+  - type: textarea
+    id: starting-points
+    attributes:
+      label: Starting Points / References
+      description: "Links, docs, prior art, or people to consult."
+      placeholder: |
+        - https://docs.nats.io/compare
+        - Internal benchmark from Q1: #87
+        - Talk to @infrastructure-team about operational constraints
+    validations:
+      required: false

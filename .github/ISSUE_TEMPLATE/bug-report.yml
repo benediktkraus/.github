@@ -1,0 +1,86 @@
+name: "Bug Report"
+description: "Report a bug or unexpected behavior."
+title: "[BUG] "
+labels: ["type:bug", "s:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug. Please fill out the fields below so we can reproduce and fix it quickly.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "A clear, concise description of the bug."
+      placeholder: "The API returns 500 instead of 422 when the request body is missing required fields."
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: "Exact steps to reproduce the behavior. Include commands, URLs, or API calls."
+      placeholder: |
+        1. Send POST to /api/users with empty body
+        2. Observe response status code
+        3. Check server logs for stack trace
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: "What should happen instead?"
+      placeholder: "The API should return 422 Unprocessable Entity with a validation error body."
+    validations:
+      required: false
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual Behavior
+      description: "What actually happens? Include error messages, status codes, or screenshots."
+      placeholder: "The API returns 500 Internal Server Error. Stack trace shows TypeError: Cannot read property 'email' of undefined."
+    validations:
+      required: false
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: "Where does this bug occur?"
+      options:
+        - production
+        - staging
+        - development
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: "How severe is the impact?"
+      options:
+        - critical — service down or data loss
+        - high — major feature broken, no workaround
+        - medium — feature impaired, workaround exists
+        - low — cosmetic or minor inconvenience
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs-screenshots
+    attributes:
+      label: Logs / Screenshots
+      description: "Paste relevant log output, error messages, or attach screenshots."
+      render: shell
+      placeholder: |
+        ERROR 2026-05-04T10:23:45Z [auth] TypeError: Cannot read property 'email' of undefined
+            at validateUser (src/validators/user.ts:42)
+            at handler (src/routes/users.ts:18)
+    validations:
+      required: false

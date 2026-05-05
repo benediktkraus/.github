@@ -1,0 +1,69 @@
+name: "Personal Task"
+description: "Personal administrative task. Automatically marked as human-only."
+title: "[PERSONAL] "
+labels: ["domain:personal", "human-gate", "s:backlog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Personal administrative tasks. These are automatically labeled `human-gate` and will not be picked up by automated workflows.
+
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: "What type of personal task is this?"
+      options:
+        - administrative
+        - appointments
+        - insurance
+        - finance
+        - household
+        - health
+        - education
+        - other
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: Task Description
+      description: "What needs to be done?"
+      placeholder: "Schedule annual health checkup. Call Dr. Mueller's office and book appointment for June."
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      description: "When must this be completed? Leave empty if no hard deadline."
+      placeholder: "2026-06-15"
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps / Checklist
+      description: "Break the task into steps if helpful."
+      placeholder: |
+        - [ ] Call office during business hours
+        - [ ] Book appointment for June
+        - [ ] Add to calendar
+        - [ ] Prepare insurance documents
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / Contacts / Links
+      description: "Any relevant phone numbers, links, documents, or notes."
+      placeholder: |
+        - Phone: +49 123 456789
+        - Office hours: Mon-Fri 8:00-16:00
+        - Insurance card number: DE123456789
+    validations:
+      required: false

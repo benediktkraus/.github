@@ -1,0 +1,119 @@
+name: "Agent Task"
+description: "Structured task designed for execution by code agents or automated workflows."
+title: "[AGENT] "
+labels: ["s:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for tasks that will be picked up and executed by code agents.
+        Be precise — agents work best with clear objectives, explicit constraints, and verifiable outcomes.
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: "What should be accomplished? One clear sentence."
+      placeholder: "Refactor the authentication middleware to support token rotation."
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context / Background
+      description: "Why does this task exist? What problem does it solve or what goal does it serve?"
+      placeholder: "Token rotation was requested in the security audit (see #42). Current middleware assumes static tokens."
+    validations:
+      required: false
+
+  - type: textarea
+    id: affected-files
+    attributes:
+      label: Affected Files / Modules
+      description: "Which files, directories, or modules are relevant? List paths or patterns."
+      placeholder: |
+        - src/middleware/auth.ts
+        - src/services/token-service.ts
+        - tests/middleware/auth.test.ts
+    validations:
+      required: false
+
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: "Checkboxes that must all pass before this task is considered done."
+      placeholder: |
+        - [ ] Token rotation endpoint accepts refresh tokens
+        - [ ] Expired tokens return 401 with proper error body
+        - [ ] All existing auth tests still pass
+        - [ ] New tests cover rotation flow
+      value: |
+        - [ ]
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification Command
+      description: "How can an agent (or reviewer) verify the task is complete? Provide a command, test suite, or curl example."
+      placeholder: |
+        npm run test -- --filter auth
+        curl -X POST /api/auth/rotate -H "Authorization: Bearer <expired>" -d '{"refresh_token": "..."}' | jq .status
+    validations:
+      required: false
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints / Forbidden Actions
+      description: "What must NOT be changed, deleted, or introduced? Explicit guardrails for the agent."
+      placeholder: |
+        - Do not modify the user model schema
+        - Do not add new dependencies
+        - Do not change the public API contract
+    validations:
+      required: false
+
+  - type: dropdown
+    id: architecture-layer
+    attributes:
+      label: Architecture Layer
+      description: "Which layer of the system does this task primarily affect?"
+      options:
+        - data
+        - api
+        - logic
+        - integration
+        - security
+        - monitoring
+        - ui
+        - infra
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: "How urgent is this task?"
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: true
+
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: "Links to related issues, PRs, docs, or external resources."
+      placeholder: |
+        - Related: #42
+        - Spec: https://docs.example.com/auth/rotation
+    validations:
+      required: false

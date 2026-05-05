@@ -1,0 +1,72 @@
+name: Sync Labels to New Repositories
+
+on:
+  repository_dispatch:
+    types: [label-sync]
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: 'Specific repo to sync (owner/name), or leave empty for all'
+        required: false
+  schedule:
+    - cron: '17 3 * * 0'  # Weekly Sunday 03:17 — catch any missed repos
+
+jobs:
+  sync-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Sync labels
+        env:
+          GH_TOKEN: ${{ secrets.LABEL_SYNC_TOKEN }}
+        run: |
+          python3 << 'PYTHON'
+          import yaml, subprocess, json, sys, time
+
+          with open("labels.yml") as f:
+              data = yaml.safe_load(f)
+
+          labels = data["labels"]
+          target = "${{ github.event.inputs.repo }}".strip()
+
+          # Get repos
+          if target:
+              repos = [target]
+          else:
+              result = subprocess.run(
+                  ["gh", "repo", "list", "benediktkraus", "--limit", "300",
+                   "--json", "nameWithOwner", "-q", ".[].nameWithOwner"],
+                  capture_output=True, text=True
+              )
+              repos = [r for r in result.stdout.strip().split("\n") if r]
+
+          # Default labels to remove
+          defaults = ["bug", "documentation", "duplicate", "enhancement",
+                      "good first issue", "help wanted", "invalid", "question", "wontfix"]
+
+          for repo in repos:
+              print(f"\n=== {repo} ===")
+              # Delete defaults
+              for d in defaults:
+                  subprocess.run(
+                      ["gh", "label", "delete", d, "--repo", repo, "--yes"],
+                      capture_output=True
+                  )
+              # Create/update our labels
+              for label in labels:
+                  subprocess.run(
+                      ["gh", "label", "create", label["name"],
+                       "--color", label["color"],
+                       "--description", label["description"],
+                       "--repo", repo, "--force"],
+                      capture_output=True
+                  )
+                  print(f"  {label['name']}")
+              time.sleep(0.3)
+
+          print(f"\nDone. {len(repos)} repos, {len(labels)} labels each.")
+          PYTHON

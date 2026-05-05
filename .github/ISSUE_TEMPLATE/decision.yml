@@ -1,0 +1,72 @@
+name: "Decision Record"
+description: "Document a decision with options, trade-offs, and outcome. Produces an ADR."
+title: "[DECISION] "
+labels: ["type:research", "s:ready"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to document architectural or strategic decisions.
+        Present options with trade-offs, then track the outcome as the decision is made.
+
+  - type: textarea
+    id: decision-question
+    attributes:
+      label: Decision Question
+      description: "What decision needs to be made? Frame it as a clear question."
+      placeholder: "Should we use PostgreSQL or DynamoDB as the primary datastore for the events service?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: options
+    attributes:
+      label: Options with Pros / Cons
+      description: "List each option with its advantages and disadvantages. Use the structure below."
+      placeholder: |
+        ### Option A: PostgreSQL
+        **Pros:**
+        - Strong consistency guarantees
+        - Rich query language (SQL)
+        - Team has deep expertise
+
+        **Cons:**
+        - Requires managed instance or self-hosted maintenance
+        - Vertical scaling limits at very high write throughput
+
+        ### Option B: DynamoDB
+        **Pros:**
+        - Fully managed, zero operational overhead
+        - Horizontal scaling with predictable latency
+
+        **Cons:**
+        - Limited query flexibility
+        - Vendor lock-in to AWS
+        - Team needs to learn new access patterns
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints & Context
+      description: "What constraints, requirements, or context factors influence this decision?"
+      placeholder: |
+        - Must support 10K writes/sec sustained
+        - Team of 3 engineers, no dedicated DBA
+        - Budget: max $500/month for data infrastructure
+        - Must be operational within 4 weeks
+    validations:
+      required: false
+
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: Expected Outcome
+      description: "Check off deliverables as the decision progresses."
+      value: |
+        - [ ] Decision documented with rationale
+        - [ ] ADR written and merged
+        - [ ] Stakeholders informed
+    validations:
+      required: false

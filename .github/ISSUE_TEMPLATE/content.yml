@@ -1,0 +1,67 @@
+name: "Content Creation"
+description: "Blog posts, newsletters, social media, podcasts, documentation, or presentations."
+title: "[CONTENT] "
+labels: ["domain:content", "s:backlog"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template for any content creation task — from blog posts to documentation to social media campaigns.
+
+  - type: dropdown
+    id: format
+    attributes:
+      label: Format
+      description: "What type of content is being created?"
+      options:
+        - blog post
+        - newsletter
+        - social media
+        - podcast
+        - documentation
+        - presentation
+        - email campaign
+    validations:
+      required: true
+
+  - type: textarea
+    id: topic
+    attributes:
+      label: Topic / Angle
+      description: "What is the content about? What's the specific angle or thesis?"
+      placeholder: "How we reduced API latency by 60% with edge caching — lessons learned and architecture walkthrough."
+    validations:
+      required: true
+
+  - type: textarea
+    id: target-audience
+    attributes:
+      label: Target Audience
+      description: "Who is this content for? What do they care about?"
+      placeholder: "Backend engineers evaluating edge caching strategies. Assume familiarity with CDNs but not with our specific stack."
+    validations:
+      required: false
+
+  - type: textarea
+    id: source-material
+    attributes:
+      label: Source Material / References
+      description: "Links to data, prior content, internal docs, or inspiration."
+      placeholder: |
+        - Performance benchmark results: #145
+        - Architecture diagram: docs/architecture/edge-cache.md
+        - Competitor post: https://example.com/edge-caching-guide
+    validations:
+      required: false
+
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables
+      description: "Check off milestones as the content progresses."
+      value: |
+        - [ ] Draft written
+        - [ ] Reviewed
+        - [ ] Published
+    validations:
+      required: false
