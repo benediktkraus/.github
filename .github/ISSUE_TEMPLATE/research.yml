@@ -76,6 +76,19 @@ body:
     validations:
       required: true
 
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: "How urgent is this research?"
+      options:
+        - critical
+        - high
+        - medium
+        - low
+    validations:
+      required: false
+
   - type: input
     id: deadline
     attributes:

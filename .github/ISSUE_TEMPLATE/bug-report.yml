@@ -36,7 +36,7 @@ body:
       description: "What should happen instead?"
       placeholder: "The API should return 422 Unprocessable Entity with a validation error body."
     validations:
-      required: false
+      required: true
 
   - type: textarea
     id: actual-behavior
@@ -45,7 +45,7 @@ body:
       description: "What actually happens? Include error messages, status codes, or screenshots."
       placeholder: "The API returns 500 Internal Server Error. Stack trace shows TypeError: Cannot read property 'email' of undefined."
     validations:
-      required: false
+      required: true
 
   - type: dropdown
     id: environment

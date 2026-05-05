@@ -12,10 +12,10 @@ Files in this repository are automatically inherited by all repositories in the 
 | **Bug Report** | Report a bug with reproduction steps and severity | `type:bug` `s:ready` |
 | **Wave / Epic** | Group related tasks into a scoped unit of work | `s:backlog` |
 | **Research** | Investigate a question, compare options, produce a recommendation | `type:research` `s:ready` |
-| **Business Task** | Non-code work: strategy, marketing, sales, partnerships | `domain:business` `s:backlog` |
+| **Business Task** | Non-code work: strategy, marketing, sales, partnerships, operations, finance | `domain:business` `s:backlog` |
 | **Decision Record** | Document a decision with options, trade-offs, and ADR outcome | `type:research` `s:ready` |
 | **Personal Task** | Personal admin tasks, automatically gated for human-only execution | `domain:personal` `human-gate` `s:backlog` |
-| **Content Creation** | Blog posts, newsletters, social media, docs, presentations | `domain:content` `s:backlog` |
+| **Content Creation** | Blog posts, newsletters, social media, videos, docs, presentations | `domain:content` `s:backlog` |
 
 Blank issues are disabled. All issues must use a template.
 

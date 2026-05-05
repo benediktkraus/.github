@@ -95,6 +95,18 @@ body:
       required: true
 
   - type: dropdown
+    id: agent-autonomy
+    attributes:
+      label: Agent Autonomy
+      description: "How much autonomy does the agent have?"
+      options:
+        - "auto — fully autonomous execution"
+        - "assisted — needs human input at specific steps"
+        - "human — must be done by a human, agent prepares only"
+    validations:
+      required: true
+
+  - type: dropdown
     id: priority
     attributes:
       label: Priority

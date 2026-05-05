@@ -30,7 +30,7 @@ body:
     attributes:
       label: Task Description
       description: "What needs to be done?"
-      placeholder: "Schedule annual health checkup. Call Dr. Mueller's office and book appointment for June."
+      placeholder: "Schedule annual health checkup. Call the doctor's office and book an appointment for June."
     validations:
       required: true
 
@@ -62,8 +62,8 @@ body:
       label: Notes / Contacts / Links
       description: "Any relevant phone numbers, links, documents, or notes."
       placeholder: |
-        - Phone: +49 123 456789
+        - Phone: +1 555-123-4567
         - Office hours: Mon-Fri 8:00-16:00
-        - Insurance card number: DE123456789
+        - Reference number: ABC-123456
     validations:
       required: false

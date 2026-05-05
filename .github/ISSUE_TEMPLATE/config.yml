@@ -2,4 +2,4 @@ blank_issues_enabled: false
 contact_links:
   - name: Discussions
     url: https://github.com/orgs/benediktkraus/discussions
-    about: "For questions, ideas, or general conversation — use Discussions instead of issues."
+    about: "For questions, ideas, or general conversation — start a discussion instead of opening an issue."

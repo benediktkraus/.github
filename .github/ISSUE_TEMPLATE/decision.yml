@@ -59,6 +59,15 @@ body:
     validations:
       required: false
 
+  - type: input
+    id: deadline
+    attributes:
+      label: Decision Deadline
+      description: "When must this decision be made? Leave empty if no hard deadline."
+      placeholder: "2026-05-20"
+    validations:
+      required: false
+
   - type: textarea
     id: expected-outcome
     attributes:

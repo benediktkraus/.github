@@ -1,5 +1,5 @@
 name: "Business Task"
-description: "Non-code work: strategy, marketing, sales, partnerships, pricing, or legal."
+description: "Non-code work: strategy, marketing, sales, partnerships, operations, finance, pricing, or legal."
 title: "[BIZ] "
 labels: ["domain:business", "s:backlog"]
 body:
@@ -19,6 +19,8 @@ body:
         - marketing
         - sales
         - partnerships
+        - operations
+        - finance
         - pricing
         - legal
     validations:
@@ -55,6 +57,19 @@ body:
         - LOI signed by both parties
         - Integration timeline agreed upon
         - Pricing terms documented in CRM
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: "How urgent is this task?"
+      options:
+        - critical
+        - high
+        - medium
+        - low
     validations:
       required: false
 
