@@ -1,6 +1,6 @@
-# GitHub Issues Label Taxonomy — 35 Labels
+# GitHub Issues Label Taxonomy — 33 Labels
 # Single Source of Truth. Deploy via: ./scripts/label-sync.sh
-# Public standard — used across all benediktkraus repos.
+# Public standard — used across repositories that adopt this taxonomy.
 
 labels:
   # Status (6) — State Machine. Only ONE s:* label at a time.

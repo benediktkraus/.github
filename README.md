@@ -1,8 +1,8 @@
 # .github
 
-Default community health files and issue templates for the **benediktkraus** organization.
+Default community health files and issue templates for repositories that use this shared standard.
 
-Files in this repository are automatically inherited by all repositories in the org that don't define their own. This includes issue templates, labels, and workflow conventions.
+Files in this repository are automatically inherited by repositories that don't define their own project-level defaults. This includes issue templates, labels, and workflow conventions.
 
 ## Issue Templates
 
